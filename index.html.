@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naciri Saveurs Traiteur - Commander</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rouge: #8B0000;
+            --vert: #006400;
+            --or: #D4AF37;
+            --creme: #FFF8F0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--creme);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            color: var(--rouge);
+            font-size: 28px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .traiteur-badge {
+            background-color: var(--or);
+            color: white;
+            padding: 2px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Section Plat du Jour */
+        .plat-du-jour {
+            background-color: #fff9e6;
+            border: 2px dashed var(--or);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .plat-du-jour h3 {
+            margin: 0;
+            color: var(--rouge);
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .plat-du-jour p {
+            margin: 5px 0 0;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--vert);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--vert);
+            font-size: 22px;
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        .footer-info {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-text">Naciri Saveurs</div>
+    <div class="traiteur-badge">TRAITEUR</div>
+    <p style="margin: 5px 0 0; color: #666; font-size: 14px;">Berrechid • 06 31 23 89 15</p>
+</header>
+
+<div class="container">
+    <div class="plat-du-jour">
+        <h3>🌟 Aujourd'hui vous allez adorer :</h3>
+        <p id="label-plat-jour">Rfissa au Poulet Beldi (Traditionnelle)</p>
+    </div>
+
+    <h2>Passer une commande</h2>
+    
+    <div class="form-group">
+        <label>Votre Nom</label>
+        <input type="text" id="nom" placeholder="Votre nom complet">
+    </div>
+
+    <div class="form-group">
+        <label>Choisir un plat</label>
+        <select id="plat">
+            <option value="Plat du Jour">Plat du Jour (Rfissa)</option>
+            <option value="Pastilla Fruits de Mer">Pastilla Fruits de Mer</option>
+            <option value="Tajine Kefta aux Œufs">Tajine Kefta aux Œufs</option>
+            <option value="Dajaj Mhamer">Poulet Mhamer (Dajaj)</option>
+            <option value="Couscous Royal">Couscous Royal</option>
+            <option value="Grande Salade Composée">Grande Salade Naciri</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Adresse de livraison</label>
+        <input type="text" id="adresse" placeholder="Quartier à Berrechid, Bouskoura...">
+    </div>
+
+    <button class="btn-whatsapp" onclick="envoyerWhatsApp()">
+        🚀 Envoyer sur WhatsApp
+    </button>
+
+    <p class="footer-info">Livraison du Lundi au Samedi. <br><strong>Fermé le Dimanche.</strong></p>
+</div>
+
+<a href="https://wa.me/212631238915" class="whatsapp-float" target="_blank">
+    <span style="font-size: 30px;">💬</span>
+</a>
+
+<script>
+    function envoyerWhatsApp() {
+        const nom = document.getElementById('nom').value;
+        const plat = document.getElementById('plat').value;
+        const adresse = document.getElementById('adresse').value;
+        const platJourText = document.getElementById('label-plat-jour').innerText;
+        const telephone = "212631238915";
+
+        if(nom === "" || adresse === "") {
+            alert("Veuillez indiquer votre nom et l'adresse de livraison.");
+            return;
+        }
+
+        // Si le client choisit "Plat du jour", on précise lequel
+        const platFinal = (plat === "Plat du Jour") ? `Plat du Jour (${platJourText})` : plat;
+
+        const message = `Bonjour Naciri Saveurs Traiteur,%0A%0A` +
+                        `Je souhaite commander :%0A` +
+                        `*Plat :* ${platFinal}%0A` +
+                        `*Nom :* ${nom}%0A` +
+                        `*Adresse :* ${adresse}`;
+
+        window.open(`https://wa.me/${telephone}?text=${message}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
